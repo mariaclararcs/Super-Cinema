@@ -24,7 +24,7 @@ const Home = () => {
         setIsLoading(true)
         setIsImgLoading(true)
 
-        let searchMovie = searchParams.get("movie")
+        let searchMovie = searchParams?.get("movie")
 
         if(searchMovie === null)
             searchMovie = "harry potter"
@@ -57,9 +57,9 @@ const Home = () => {
     }, [movie])
 
     return (
-        <div className="bg-primary relative px-4 md:px-0 h-screen">
+        <div className="bg-primary relative px-4 md:px-0 min-h-screen">
             {isLoading && <Loading />}
-            <div className="container mx-auto min-h-[calc(100vh-77px)] flex items-center relative">
+            <div className="container mx-auto md:min-h-[calc(100vh-77px)] flex flex-col lg:flex-row gap-10 lg:mx-10 py-10 md:py-20">
                 <div className="flex-col lg:flex-row flex gap-10 lg:mx-10 py-20">
                     {movie ? (
                         <>
