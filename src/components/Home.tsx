@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import Loading from "./Loading";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 import FormatDate from "@/utils/formatDate";
 import { useMovie } from "@/context/MovieContext";
 import { MovieStateProvider, useMovieState } from "@/context/MovieStateContext";
+import IMovies from "@/intefaces/IMovie";
 
 const fetchMovieData = (searchParams: URLSearchParams, setMovie: React.Dispatch<React.SetStateAction<IMovies | null>>, setTrailer: React.Dispatch<React.SetStateAction<string>>, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>, setIsImgLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
     setIsLoading(true);
@@ -54,7 +55,7 @@ const HomeContent = () => {
     }, [searchParams, setMovie, setTrailer, setIsLoading, setIsImgLoading]);
 
     useEffect(() => {
-        const trailerMovieIndex = movie?.videos?.results?.findIndex((element) => element.type === 'Trailer');
+        const trailerMovieIndex = movie?.videos?.results?.findIndex((element: { type: string; }) => element.type === 'Trailer');
         const trailerUrl = `https://www.youtube.com/watch?v=${movie?.videos?.results[trailerMovieIndex || 0]?.key}`;
         setTrailer(trailerUrl);
     }, [movie]);
@@ -71,8 +72,8 @@ const HomeContent = () => {
                                     src={movie?.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : ''}
                                     width={700}
                                     height={700}
-                                    className="w-[350px] h-[500px] object-cover"
-                                    alt="Poster do Filme"
+                                    className="w-[350px] h-[500px] object-cover rounded-md"
+                                    alt="Movie Poster"
                                     onLoadingComplete={() => setIsImgLoading(false)}
                                     priority
                                 />
@@ -83,7 +84,7 @@ const HomeContent = () => {
                                     {movie?.title}
                                 </div>
                                 <div className="flex gap-4 flex-wrap">
-                                {movie?.genres?.map((genre, i) => (
+                                {movie?.genres?.map((genre: { id: Key | null | undefined; name: string; }, i: number) => (
                                     <Genres 
                                         key={genre?.id}
                                         index={i}

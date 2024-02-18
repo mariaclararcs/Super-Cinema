@@ -1,7 +1,7 @@
 const SeriesPage = () => {
     return(
         <div>
-            <h1>sÉRIES CARAIO</h1>
+            <h1>Series</h1>
         </div>
     );
 }

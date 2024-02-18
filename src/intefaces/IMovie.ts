@@ -1,4 +1,5 @@
 interface IMovies{
+    key: number;
     poster_path: string;
     title: string;
     genres: [
@@ -21,3 +22,5 @@ interface IMovies{
         ]
     }
 }
+
+export default IMovies;
