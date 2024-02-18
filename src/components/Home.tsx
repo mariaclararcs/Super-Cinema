@@ -10,6 +10,7 @@ import { BsPlayFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import ReactPlayer from "react-player";
 import FormatDate from "@/utils/formatDate";
+import { useMovie } from "@/context/MovieContext";
 
 const Home = () => {
     const searchParams = useSearchParams()
@@ -18,7 +19,7 @@ const Home = () => {
     const [isImgLoading, setIsImgLoading] = useState(false)
     const [showPlayer, setShowPlayer] = useState(false)
     const [trailer, setTrailer] = useState('')
-    const [movie, setMovie] = useState<IMovies | null>()
+    const { movie, setMovie } = useMovie();
 
     useEffect(() => {
         setIsLoading(true)
@@ -46,7 +47,7 @@ const Home = () => {
                 setIsLoading(false)
             }
         });
-    }, [searchParams])
+    }, [searchParams, setMovie])
 
     useEffect(() => {
         const trailerMovieIndex = movie?.videos?.results?.findIndex(
