@@ -11,51 +11,53 @@ import { IoMdClose } from "react-icons/io";
 import ReactPlayer from "react-player";
 import FormatDate from "@/utils/formatDate";
 import { useMovie } from "@/context/MovieContext";
+import { MovieStateProvider, useMovieState } from "@/context/MovieStateContext";
 
-const Home = () => {
-    const searchParams = useSearchParams()
+const fetchMovieData = (searchParams: URLSearchParams, setMovie: React.Dispatch<React.SetStateAction<IMovies | null>>, setTrailer: React.Dispatch<React.SetStateAction<string>>, setIsLoading: React.Dispatch<React.SetStateAction<boolean>>, setIsImgLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setIsLoading(true);
+    setIsImgLoading(true);
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [isImgLoading, setIsImgLoading] = useState(false)
-    const [showPlayer, setShowPlayer] = useState(false)
-    const [trailer, setTrailer] = useState('')
+    let searchMovie = searchParams?.get('movie');
+
+    if (searchMovie === null) searchMovie = 'harry potter';
+
+    axios.get(`https://api.themoviedb.org/3/search/movie`, {
+        params: {
+            api_key: process.env.NEXT_PUBLIC_API_KEY,
+            query: searchMovie,
+        },
+    }).then((response) =>{
+        if(response?.data?.results && response.data.results.length > 0){
+            axios.get(
+                `https://api.themoviedb.org/3/movie/${response?.data?.results[0]?.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=videos`
+            )
+            .then((response) => {
+                setMovie(response.data);
+                setIsLoading(false);
+            });
+        }else{
+            setMovie(null);
+            setIsLoading(false);
+        }
+    });
+};
+
+const HomeContent = () => {
+    const searchParams = useSearchParams();
     const { movie, setMovie } = useMovie();
+    const { isLoading, isImgLoading, showPlayer, trailer, setIsLoading, setIsImgLoading, setShowPlayer, setTrailer } = useMovieState();
 
     useEffect(() => {
-        setIsLoading(true)
-        setIsImgLoading(true)
+        if(!searchParams) return
 
-        let searchMovie = searchParams?.get("movie")
-
-        if(searchMovie === null)
-            searchMovie = "harry potter"
-
-        axios.get(`https://api.themoviedb.org/3/search/movie`, {
-            params: {
-                api_key: process.env.NEXT_PUBLIC_API_KEY,
-                query: searchMovie
-            }
-        }).then((response) => {
-            if(response?.data?.results && response.data.results.length > 0){
-                axios.get(`https://api.themoviedb.org/3/movie/${response?.data?.results[0]?.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=videos`)
-                .then((response) => {
-                    setMovie(response.data)
-                    setIsLoading(false)
-                })
-            }else{
-                setMovie(null)
-                setIsLoading(false)
-            }
-        });
-    }, [searchParams, setMovie])
+        fetchMovieData(searchParams, setMovie, setTrailer, setIsLoading, setIsImgLoading);
+    }, [searchParams, setMovie, setTrailer, setIsLoading, setIsImgLoading]);
 
     useEffect(() => {
-        const trailerMovieIndex = movie?.videos?.results?.findIndex(
-            (element) => element.type === "Trailer"
-        )
-        const trailer = `https://www.youtube.com/watch?v=${movie?.videos?.results[trailerMovieIndex || 0]?.key}`
-        setTrailer(trailer);
-    }, [movie])
+        const trailerMovieIndex = movie?.videos?.results?.findIndex((element) => element.type === 'Trailer');
+        const trailerUrl = `https://www.youtube.com/watch?v=${movie?.videos?.results[trailerMovieIndex || 0]?.key}`;
+        setTrailer(trailerUrl);
+    }, [movie]);
 
     return (
         <div className="bg-primary relative px-4 md:px-0 min-h-screen">
@@ -136,6 +138,12 @@ const Home = () => {
             </div>
         </div>
     );
-}
+};
+
+const Home = () => (
+    <MovieStateProvider>
+        <HomeContent />
+    </MovieStateProvider>
+)
 
 export default Home;
