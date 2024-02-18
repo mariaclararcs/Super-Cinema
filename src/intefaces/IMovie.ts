@@ -1,5 +1,5 @@
-interface IMovie{
-    backdrop_path: string;
+interface IMovies{
+    poster_path: string;
     title: string;
     genres: [
         {

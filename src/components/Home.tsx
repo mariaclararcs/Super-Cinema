@@ -18,7 +18,7 @@ const Home = () => {
     const [isImgLoading, setIsImgLoading] = useState(false)
     const [showPlayer, setShowPlayer] = useState(false)
     const [trailer, setTrailer] = useState('')
-    const [movie, setMovie] = useState<IMovie | null>()
+    const [movie, setMovie] = useState<IMovies | null>()
 
     useEffect(() => {
         setIsLoading(true)
@@ -59,13 +59,13 @@ const Home = () => {
     return (
         <div className="bg-primary relative px-4 md:px-0 min-h-screen">
             {isLoading && <Loading />}
-            <div className="container mx-auto md:min-h-[calc(100vh-77px)] flex flex-col lg:flex-row gap-10 lg:mx-10 py-10 md:py-20">
-                <div className="flex-col lg:flex-row flex gap-10 lg:mx-10 py-20">
+            <div className="container mx-auto md:min-h-[calc(100vh-77px)] flex flex-col lg:flex-row gap-10 lg:mx-10">
+                <div className="flex-col lg:flex-row flex gap-10 lg:mx-10 py-12">
                     {movie ? (
                         <>
                             <div className="mx-auto flex-none relative">
                                 <Image
-                                    src={movie?.backdrop_path ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` : ''}
+                                    src={movie?.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : ''}
                                     width={700}
                                     height={700}
                                     className="w-[350px] h-[500px] object-cover"
@@ -76,7 +76,7 @@ const Home = () => {
                                 {isImgLoading && <Loading />}
                             </div>
                             <div className="space-y-6">
-                                <div className="uppercase -translate-y-3 text-[26px] md:text-[34px] font-medium pr-4 text-white">
+                                <div className="uppercase -translate-y-3 text-[20px] md:text-[25px] font-medium pr-4 text-white">
                                     {movie?.title}
                                 </div>
                                 <div className="flex gap-4 flex-wrap">
@@ -92,7 +92,7 @@ const Home = () => {
                                 <div className="flex flex-col md:flex-row gap-2 md:gap-6">
                                     <div>Language: {movie?.original_language?.toUpperCase()}</div>
                                     <div>Version: {FormatDate(movie?.release_date)}</div>
-                                    <div>Time: {movie?.runtime}</div>
+                                    <div>Time: {movie?.runtime}m</div>
                                     <div>Classification: {movie?.vote_average} ⭐</div>
                                 </div>
                                 <div className="pt-14 space-y-2 pr-4">

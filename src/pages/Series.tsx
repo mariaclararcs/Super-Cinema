@@ -1,7 +1,5 @@
-const Series = () => {
-    return(
-        <div>TV Series</div>
-    );
-};
+import SeriesPage from "@/components/SeriesPage";
 
-export default Series;
+export default function Series(){
+    return <SeriesPage />;
+}
