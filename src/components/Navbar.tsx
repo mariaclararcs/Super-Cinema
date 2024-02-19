@@ -27,7 +27,7 @@ const Navbar = () => {
                             <div className="flex space-x-4">
                                 <Link href="/" className="text-gray-300 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-base font-semibold">Super Cinema</Link>
                                 <Link href="/movies" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</Link>
-                                <Link href="/series" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Shows</Link>
+                                <Link href="/Series" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Shows</Link>
                             </div>
                         </div>
                     </div>
