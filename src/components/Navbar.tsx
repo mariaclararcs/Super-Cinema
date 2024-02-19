@@ -25,9 +25,9 @@ const Navbar = () => {
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
-                                <a href="/" className="text-gray-300 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-base font-semibold">Super Cinema</a>
-                                <a href="/movies" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</a>
-                                <a href="/series" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Shows</a>
+                                <link href="/" className="text-gray-300 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-base font-semibold">Super Cinema</link>
+                                <link href="/movies" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</link>
+                                <link href="/series" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Shows</link>
                             </div>
                         </div>
                     </div>
