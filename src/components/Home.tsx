@@ -13,6 +13,7 @@ import FormatDate from "@/utils/formatDate";
 import { useMovie } from "@/context/MovieContext";
 import { MovieStateProvider, useMovieState } from "@/context/MovieStateContext";
 import IMovies from "@/intefaces/IMovie";
+import React, { Suspense } from 'react';
 
 const fetchMovieData = async (
   searchParams: URLSearchParams,
@@ -62,7 +63,6 @@ const fetchMovieData = async (
     }
   } catch (error) {
     console.error("Error fetching movie data:", error);
-    // Aqui você pode lidar com o erro de pré-renderização
   }
 
   setIsLoading(false);
@@ -97,6 +97,7 @@ const HomeContent = () => {
 
   return (
     <div className="bg-primary relative px-4 md:px-0 min-h-screen">
+      <Suspense fallback={<Loading />}>
       {isLoading && <Loading />}
       <div className="container mx-auto md:min-h-[calc(100vh-77px)] flex flex-col lg:flex-row gap-10 lg:mx-10">
         <div className="flex-col lg:flex-row flex gap-10 lg:mx-10 py-12">
@@ -153,7 +154,7 @@ const HomeContent = () => {
               </div>
             </>
           ) : (
-            <p>Esse filme não existe.</p>
+            <p>This movie does not exists.</p>
           )}
         </div>
         {trailer && (
@@ -184,6 +185,7 @@ const HomeContent = () => {
           </div>
         )}
       </div>
+      </Suspense>
     </div>
   );
 };
