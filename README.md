@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Super Cinema
 
-## Getting Started
+[![Super Cinema](https://github.com/mariaclararcs/)](https://github.com/mariaclararcs/)
 
-First, run the development server:
+## Introdução
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Bem-vindo ao Super Cinema! Este programa foi desenvolvido utilizando Next.js 14, Tailwind e TypeScript.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalação
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Certifique-se de ter o Node.js instalado em seu computador (v21.6.1). Siga estes passos:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone o projeto usando o comando `git clone` no seu terminal.
+2. Abra sua IDE preferida e execute o comando `npm install` para instalar todos os pacotes necessários do projeto.
 
-## Learn More
+## Uso
 
-To learn more about Next.js, take a look at the following resources:
+1. Ao iniciar, você será redirecionado para a página inicial do Super Cinema, onde o filme padrão será exibido. Utilize o campo de pesquisa para procurar por um filme específico, abrindo suas informações e trailer disponível.
+2. Utilize a navbar para explorar filmes, séries e programas de TV.
+3. Ao navegar por uma opção escolhida na barra de navegação, uma lista de filmes ou programas será carregada. Você pode pesquisar um filme específico na lista disponível usando o campo de pesquisa na página.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Informações Adicionais
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O código e o conteúdo do site estão padronizados em inglês devido aos retornos da API. A aplicação consome apenas três rotas da API: "get all movies," "get all series" e "search."

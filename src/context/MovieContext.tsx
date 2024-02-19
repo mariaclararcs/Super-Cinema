@@ -1,5 +1,6 @@
 "use client"
 
+import IMovies from '@/intefaces/IMovie';
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface MovieContextProps {

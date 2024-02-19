@@ -1,4 +1,5 @@
 interface ISeries{
+    key: number;
     poster_path: string;
     name: string;
     genres: [
@@ -12,3 +13,5 @@ interface ISeries{
     vote_average: string;
     overview: string;
 }
+
+export default ISeries;

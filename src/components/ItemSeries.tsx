@@ -1,6 +1,6 @@
 "use client";
 
-import IMovies from "@/intefaces/IMovie";
+import ISeries from "@/intefaces/ISeries";
 import Image from "next/image";
 import formatDateYear from "@/utils/formatDateYear";
 import { useState } from "react";
@@ -8,27 +8,23 @@ import { useState } from "react";
 interface ItemProps {
     key: number;
     poster_path: string;
-    title: string;
-    genres: [{ name: string; id: string }];
+    name: string;
+    genres: [{ name: string; id: number }];
     original_language: string;
-    release_date: string;
-    runtime: string;
+    first_air_date: string;
     vote_average: string;
     overview: string;
-    videos: { results: [{ type: string; key: string }] };
 }
 
-const Item = ({
+const ItemSeries = ({
     key,
     poster_path,
-    title,
+    name,
     genres,
     original_language,
-    release_date,
-    runtime,
+    first_air_date,
     vote_average,
     overview,
-    videos,
     }: ItemProps) => {
 
     return(
@@ -40,7 +36,7 @@ const Item = ({
                     width={400}
                     height={650}
                     className="h-full w-full max-w-400 max-h-650 object-cover object-center lg:h-full lg:w-full"
-                    alt="Movie Poster"
+                    alt="TV Show Poster"
                     priority
                 />
                 </div>
@@ -49,10 +45,10 @@ const Item = ({
                         <h3 className="text-sm text-white">
                             <a href="" className="uppercase font-semibold">
                                 <span aria-hidden="true" className="absolute inset-0"></span>
-                                {title}
+                                {name}
                             </a>
                         </h3>
-                        <p className="mt-1 text-sm text-white">{formatDateYear(release_date)}</p>
+                        <p className="mt-1 text-sm text-white">{formatDateYear(first_air_date)}</p>
                     </div>
                 </div>
             </div>
@@ -60,4 +56,4 @@ const Item = ({
     )
 }
 
-export default Item;
+export default ItemSeries;

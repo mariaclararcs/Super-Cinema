@@ -7,8 +7,8 @@ import { MovieProvider } from "@/context/MovieContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Super Series",
-  description: "The best site for series and movies!",
+  title: "Super Cinema",
+  description: "The best site for series, TV shows and movies!",
 };
 
 export default function RootLayout({
