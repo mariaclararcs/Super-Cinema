@@ -6,12 +6,17 @@
 
 Bem-vindo ao Super Cinema! Este programa foi desenvolvido utilizando Next.js 14, Tailwind e TypeScript.
 
+## Sobre
+O Super Cinema é um site desenvolvido com Next.js versão 14, Tailwind CSS e padrões arquiteturais de Next e React, consumindo uma API pública de filmes. É um teste de front-end para a empresa Next Tecnologia. 
+
 ## Instalação
 
 Certifique-se de ter o Node.js instalado em seu computador (v21.6.1). Siga estes passos:
 
-1. Clone o projeto usando o comando `git clone` no seu terminal.
+1. Clone o projeto usando o comando `git clone git@github.com:mariaclararcs/Super-Cinema.git` no seu terminal.
 2. Abra sua IDE preferida e execute o comando `npm install` para instalar todos os pacotes necessários do projeto.
+3. Rode o projeto com `npm run dev.`
+4. O projeto também pode ser encontrado em `https://super-cinema.vercel.app/`
 
 ## Uso
 
@@ -21,4 +26,5 @@ Certifique-se de ter o Node.js instalado em seu computador (v21.6.1). Siga estes
 
 ## Informações Adicionais
 
-O código e o conteúdo do site estão padronizados em inglês devido aos retornos da API. A aplicação consome apenas três rotas da API: "get all movies," "get all series" e "search."
+O código e o conteúdo do site estão padronizados em inglês devido aos retornos da API. 
+A aplicação consome apenas três rotas da API: "get all movies," "get all series" e "search."
